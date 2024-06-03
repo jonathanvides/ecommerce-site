@@ -1,2 +1,2 @@
 # ecommerce-site
-../images/ecommerce-site.png
+![alt text](image.png)
