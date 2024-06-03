@@ -1,3 +1,3 @@
 # ecommerce-site
 ## Database Schema
-![alt text](ecommerce-site.png)
+![alt text](/images/ecommerce-site.png)
