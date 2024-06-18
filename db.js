@@ -1,22 +1,22 @@
 const pg = require('pg');
 const uuid = require('uuid');
-const dotenv = require('dotenv').config();
+// const dotenv = require('dotenv').config();
 
-const client = new pg.Client({ connectionString: process.env.DATABASE_URL || 'postgres://localhost/ecommerce_db' });
+const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/ecommerce_db');
 
 const createTables = async () => {
-  const SQL = `
-  DROP TABLE IF EXISTS users;
-  DROP TABLE IF EXISTS roles;
-  DROP TABLE IF EXISTS user_roles;
-  DROP TABLE IF EXISTS categories;
-  DROP TABLE IF EXISTS products;
-  DROP TABLE IF EXISTS orders;
-  DROP TABLE IF EXISTS order_status;
-  DROP TABLE IF EXISTS order_details;
-  DROP TABLE IF EXISTS user_addresses;
-  DROP TABLE IF EXISTS cart_items;
-  DROP TABLE IF EXISTS carts;
+    const SQL = `
+  DROP TABLE IF EXISTS users CASCADE;
+  DROP TABLE IF EXISTS roles CASCADE;
+  DROP TABLE IF EXISTS user_roles CASCADE;
+  DROP TABLE IF EXISTS categories CASCADE;
+  DROP TABLE IF EXISTS products CASCADE;
+  DROP TABLE IF EXISTS orders CASCADE;
+  DROP TABLE IF EXISTS order_status CASCADE;
+  DROP TABLE IF EXISTS order_details CASCADE;
+  DROP TABLE IF EXISTS user_addresses CASCADE;
+  DROP TABLE IF EXISTS cart_items CASCADE;
+  DROP TABLE IF EXISTS carts CASCADE;
 
     CREATE TABLE users (
         id UUID PRIMARY KEY,
@@ -120,7 +120,68 @@ const createTables = async () => {
     );
   `;
 
-  await client.query(SQL);
+    await client.query(SQL);
 };
 
-export { createTables, client }
+const createUser = async ({
+    username,
+    email,
+    password,
+    first_name,
+    last_name,
+    phone_number,
+}) => {
+    const SQL = ` INSERT INTO users (id, username, email, password, first_name, last_name, phone_number) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
+    const response = await client.query(SQL, [
+        uuid.v4(),
+        username,
+        email,
+        await bcrypt.hash(password, 5),
+        first_name,
+        last_name,
+        phone_number,
+    ]);
+    return response.rows[0];
+};
+
+const createProduct = async ({
+    category_id,
+    name,
+    description,
+    quantity,
+    price,
+    image,
+}) => {
+    const SQL = ` INSERT INTO products (id, category_id, name, description, quantity, price, image) VALUES ($1, $2, $3, $4, $5, $6, $7) `;
+    const response = await client.query(SQL, [
+        uuid.v4(),
+        category_id,
+        name,
+        description,
+        quantity,
+        price,
+        image,
+    ]);
+    return response.rows[0];
+};
+
+const fetchUsers = async () => {
+    const SQL = ` SELECT * FROM users`;
+    const response = await client.query(SQL);
+    return response.rows;
+};
+
+const fetchProducts = async () => {
+    const SQL = ` SELECT * FROM products`;
+    const response = await client.query(SQL);
+    return response.rows;
+};
+
+const deleteProduct = async ({ id, user_id }) => {
+    const SQL = ` DELETE FROM products 
+                    WHERE id = $1
+                    AND user_id = $2`;
+    await client.query(SQL, [uuid.v4(), user_id]);
+};
+
+module.exports = { createTables, client, createUser, createProduct, fetchUsers, fetchProducts, deleteProduct, };
