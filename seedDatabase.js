@@ -1,3 +1,7 @@
+const { createUser } = require('./controllers/user.js');
+const { createAdmin } = require('./controllers/admin.js');
+const { createProduct } = require('./controllers/product.js');
+
 const seedDatabase = async () => {
     const testUsers = [
         {
@@ -41,6 +45,46 @@ const seedDatabase = async () => {
             phone_number: "(333)-333-3333",
         },
     ];
+
+    const testUser = await Promise.all(
+        testUsers.map(async (user) => {
+            const createdUser = await createUser(user);
+            console.log(createdUser);
+        })
+    );
+    console.log(testUser);
+
+    const testAdmins = [
+        {
+            username: "logan",
+            password: "boss",
+            first_name: "Logan",
+            last_name: "Hernandez",
+            permissions: "all"
+        },
+        {
+            username: "don",
+            password: "admin1",
+            first_name: "Don",
+            last_name: "Manning",
+            permissions: "all"
+        },
+        {
+            username: "max",
+            password: "madmax9",
+            first_name: "Max",
+            last_name: "Jefferson",
+            permissions: "all"
+        },
+    ];
+
+    const testAdmin = await Promise.all(
+        testAdmin.map(async (admin) => {
+            const createdAdmin = await createAdmin(admin);
+            console.log(createdAdmin);
+        })
+    );
+    console.log(testAdmin);
 
     const testProducts = [
         {
@@ -164,7 +208,16 @@ const seedDatabase = async () => {
             image: "https://example.com/images/aja_wilson_jersey.jpg"
         }
     ];
-}
+
+    const testProduct = await Promise.all(
+        testProducts.map(async (product) => {
+            const createdProduct = await createProduct(product);
+            console.log(createdProduct);
+        })
+    );
+    console.log(testProduct);
+
+};
 
 module.exports = {
     seedDatabase,

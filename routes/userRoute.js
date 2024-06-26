@@ -14,7 +14,7 @@ const {
 } = require('../controllers/auth.js')
 
 const {
-    isAuthenticated,
+    isAuthenticatedUser,
 } = require('../middleware/authMiddleware.js');
 
 router.post('/signup', async (req, res, next) => {
@@ -42,7 +42,7 @@ router.post('/login', async (req, res, next) => {
     }
 });
 
-router.get('/me', isAuthenticated, async (req, res, next) => {
+router.get('/me', isAuthenticatedUser, async (req, res, next) => {
     try {
         const user = await fetchUserById(req.user.id);
         if (!user) {
@@ -54,7 +54,7 @@ router.get('/me', isAuthenticated, async (req, res, next) => {
     }
 });
 
-router.get('/:id', isAuthenticated, async (req, res, next) => {
+router.get('/:id', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { id } = req.params;
         const user = await fetchUserById(id);
@@ -67,7 +67,7 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
     }
 });
 
-router.get('/', isAuthenticated, async (req, res, next) => {
+router.get('/', isAuthenticatedUser, async (req, res, next) => {
     try {
         const users = await fetchUsers();
         if (!users) {
@@ -79,7 +79,7 @@ router.get('/', isAuthenticated, async (req, res, next) => {
     }
 });
 
-router.put('/:id', isAuthenticated, async (req, res, next) => {
+router.put('/:id', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { id } = req.params;
         const userNewData = req.body;
@@ -93,7 +93,7 @@ router.put('/:id', isAuthenticated, async (req, res, next) => {
     }
 });
 
-router.delete('/:id', isAuthenticated, async (req, res, next) => {
+router.delete('/:id', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { id } = req.params;
         await deleteUser(id);

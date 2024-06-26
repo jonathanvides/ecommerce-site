@@ -9,8 +9,7 @@ const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/e
 const createTables = async () => {
     const SQL = `
   DROP TABLE IF EXISTS users CASCADE;
-  DROP TABLE IF EXISTS roles CASCADE;
-  DROP TABLE IF EXISTS user_roles CASCADE;
+  DROP TABLE IF EXISTS admins CASCADE;
   DROP TABLE IF EXISTS categories CASCADE;
   DROP TABLE IF EXISTS products CASCADE;
   DROP TABLE IF EXISTS orders CASCADE;
@@ -32,18 +31,15 @@ const createTables = async () => {
         updated_at TIMESTAMP DEFAULT NOW()
     );
 
-    CREATE TABLE roles (
+    CREATE TABLE admins (
         id UUID PRIMARY KEY,
-        role_name VARCHAR(50) NOT NULL,
+        username VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        first_name VARCHAR(100) NOT NULL,
+        last_name VARCHAR(100) NOT NULL,
+        permissions TEXT,
         created_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NOW()
-    );
-
-    CREATE TABLE user_roles (
-        id UUID PRIMARY KEY,
-        user_id UUID REFERENCES users(id) NOT NULL,
-        role_id UUID REFERENCES roles(id) NOT NULL,
-        CONSTRAINT unique_user_role UNIQUE (user_id, role_id)
     );
 
     CREATE TABLE categories (
@@ -125,65 +121,4 @@ const createTables = async () => {
     await client.query(SQL);
 };
 
-const createUser = async ({
-    username,
-    email,
-    password,
-    first_name,
-    last_name,
-    phone_number,
-}) => {
-    const SQL = ` INSERT INTO users (id, username, email, password, first_name, last_name, phone_number) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
-    const response = await client.query(SQL, [
-        uuid.v4(),
-        username,
-        email,
-        await bcrypt.hash(password, 5),
-        first_name,
-        last_name,
-        phone_number,
-    ]);
-    return response.rows[0];
-};
-
-const createProduct = async ({
-    category_id,
-    name,
-    description,
-    quantity,
-    price,
-    image,
-}) => {
-    const SQL = ` INSERT INTO products (id, category_id, name, description, quantity, price, image) VALUES ($1, $2, $3, $4, $5, $6, $7) `;
-    const response = await client.query(SQL, [
-        uuid.v4(),
-        category_id,
-        name,
-        description,
-        quantity,
-        price,
-        image,
-    ]);
-    return response.rows[0];
-};
-
-const fetchUsers = async () => {
-    const SQL = ` SELECT * FROM users`;
-    const response = await client.query(SQL);
-    return response.rows;
-};
-
-const fetchProducts = async () => {
-    const SQL = ` SELECT * FROM products`;
-    const response = await client.query(SQL);
-    return response.rows;
-};
-
-const deleteProduct = async ({ id, user_id }) => {
-    const SQL = ` DELETE FROM products 
-                    WHERE id = $1
-                    AND user_id = $2`;
-    await client.query(SQL, [uuid.v4(), user_id]);
-};
-
-module.exports = { createTables, client, createUser, createProduct, fetchUsers, fetchProducts, deleteProduct, };
+module.exports = { createTables, client };
