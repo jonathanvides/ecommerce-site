@@ -35,8 +35,8 @@ router.post('/', isAuthenticatedAdmin, async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        const products = await fetchProducts();
-        res.json(products);
+        const product = await fetchProducts();
+        res.json(product);
     } catch (error) {
         next(error);
     }

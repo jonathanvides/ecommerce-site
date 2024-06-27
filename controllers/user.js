@@ -91,4 +91,4 @@ module.exports = {
     fetchUserById,
     updateUser,
     deleteUser,
-  };
+};

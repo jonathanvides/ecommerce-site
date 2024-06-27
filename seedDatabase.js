@@ -79,7 +79,7 @@ const seedDatabase = async () => {
     ];
 
     const testAdmin = await Promise.all(
-        testAdmin.map(async (admin) => {
+        testAdmins.map(async (admin) => {
             const createdAdmin = await createAdmin(admin);
             console.log(createdAdmin);
         })

@@ -1,7 +1,7 @@
-import dotenv from "dotenv";
 const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv').config();
 const {
     createAdmin,
     fetchAdmin,
@@ -13,7 +13,7 @@ const {
 const {
     isAuthenticatedAdmin,
 } = require('../middleware/authMiddleware.js');
-dotenv.config();
+
 const router = express('router');
 
 router.post("/", isAuthenticatedAdmin, createAdmin); 

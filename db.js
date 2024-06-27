@@ -1,8 +1,6 @@
-import dotenv from "dotenv";
-dotenv.config();
-
 const pg = require('pg');
 const uuid = require('uuid');
+const dotenv = require('dotenv').config();
 
 const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/ecommerce_db');
 
