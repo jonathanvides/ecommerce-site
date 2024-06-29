@@ -100,7 +100,9 @@ const createTables = async () => {
         cart_id UUID REFERENCES carts(id) ON DELETE CASCADE
         product_id UUID REFERENCES products(id) ON DELETE CASCADE,
         product_name VARCHAR(255),
+        product_description VARCHAR(255),
         product_price DECIMAL,
+        product_image DECIMAL,
         quantity INTEGER NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NOW()

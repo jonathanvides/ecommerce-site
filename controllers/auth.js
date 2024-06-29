@@ -32,7 +32,10 @@ const authenticateUser = async ({ email, password }) => {
         secret,
         {}
     );
-    return { token };
+
+    const userDetails = await findUserByToken(token);
+
+    return { userDetails, token };
 };
 
 const authenticateAdmin = async ({ username, password }) => {
@@ -64,7 +67,10 @@ const authenticateAdmin = async ({ username, password }) => {
         secret,
         {}
     );
-    return { token };
+
+    const adminDetails = await findAdminByToken(token);
+
+    return { adminDetails, token };
 };
 
 const findUserByToken = async (token) => {

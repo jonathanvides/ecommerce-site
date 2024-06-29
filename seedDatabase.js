@@ -101,7 +101,7 @@ const seedDatabase = async () => {
             description: "Kansas City Chiefs Patrick Mahomes Game Jersey",
             quantity: 8,
             price: 139.99,
-            image: "https://example.com/images/patrick_mahomes_jersey.jpg"
+            image: "https://fanatics.frgimages.com/kansas-city-chiefs/mens-nike-patrick-mahomes-red-kansas-city-chiefs-game-jersey_pi3892000_ff_3892890-97e8f397481937adf7a4_full.jpg?_hv=2&w=340"
         },
         {
             category: "NFL",
@@ -194,7 +194,7 @@ const seedDatabase = async () => {
         {
             category: "WNBA",
             name: "Breanna Stewart Jersey",
-            description: "New York Liberty Breanna Stewart Rebel Edition Jersey",
+            description: "New York Liberty Breanna Stewart Explorer Edition Jersey",
             quantity: 5,
             price: 99.99,
             image: "https://example.com/images/breanna_stewart_jersey.jpg"

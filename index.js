@@ -10,6 +10,9 @@ const port = process.env.PORT || 3000;
 const products = require('./routes/productRoute.js');
 const admins = require('./routes/adminRoute.js');
 const users = require('./routes/userRoute.js');
+const carts = require('./controllers/cart.js');
+const orders = require('./controllers/order.js');
+const categories = require('./controllers/category.js');
 
 app.use(
     cors({
@@ -24,6 +27,9 @@ app.use(express.json());
 app.use('/api/products', products);
 app.use('/api/admins', admins);
 app.use('/api/users', users);
+app.use('/api', carts);
+app.use('/api', orders);
+app.use('/api', categories);
 
 const init = async () => {
     try {
