@@ -14,7 +14,7 @@ const seedDatabase = async () => {
         },
         {
             username: "kristen",
-            address: "ilovedogs22@gmail.com",
+            email: "ilovedogs22@gmail.com",
             password: "unknown",
             first_name: "Kristen",
             last_name: "Jones",
@@ -22,7 +22,7 @@ const seedDatabase = async () => {
         },
         {
             username: "andrew",
-            address: "sportsenjoyer81@gmail.com",
+            email: "sportsenjoyer81@gmail.com",
             password: "secret",
             first_name: "Andrew",
             last_name: "Johnson",
@@ -30,7 +30,7 @@ const seedDatabase = async () => {
         },
         {
             username: "ben",
-            address: "happyguy10@gmail.com",
+            email: "happyguy10@gmail.com",
             password: "shhh",
             first_name: "Ben",
             last_name: "Sanders",
@@ -38,7 +38,7 @@ const seedDatabase = async () => {
         },
         {
             username: "sally",
-            address: "sportfan22@gmail.com",
+            email: "sportfan22@gmail.com",
             password: "sports",
             first_name: "Sally",
             last_name: "Davidson",
@@ -88,124 +88,124 @@ const seedDatabase = async () => {
 
     const testProducts = [
         {
-            category: "NFL",
             name: "Tom Brady Jersey",
             description: "New England Patriots Tom Brady Game Jersey",
             quantity: 10,
             price: 129.99,
-            image: "https://example.com/images/tom_brady_jersey.jpg"
+            image: "https://fanatics.frgimages.com/new-england-patriots/mens-nike-tom-brady-navy-new-england-patriots-game-retired-player-jersey_pi4725000_ff_4725301-9a225ff9c7cbed5f1e82_full.jpg?_hv=2&w=340",
+            category: "NFL"
         },
         {
-            category: "NFL",
             name: "Patrick Mahomes Jersey",
             description: "Kansas City Chiefs Patrick Mahomes Game Jersey",
             quantity: 8,
             price: 139.99,
-            image: "https://fanatics.frgimages.com/kansas-city-chiefs/mens-nike-patrick-mahomes-red-kansas-city-chiefs-game-jersey_pi3892000_ff_3892890-97e8f397481937adf7a4_full.jpg?_hv=2&w=340"
+            image: "https://fanatics.frgimages.com/kansas-city-chiefs/mens-nike-patrick-mahomes-red-kansas-city-chiefs-game-jersey_pi3892000_ff_3892890-97e8f397481937adf7a4_full.jpg?_hv=2&w=340",
+            category: "NFL"
         },
         {
-            category: "NFL",
             name: "Aaron Rodgers Jersey",
             description: "Green Bay Packers Aaron Rodgers Game Jersey",
             quantity: 5,
             price: 129.99,
-            image: "https://example.com/images/aaron_rodgers_jersey.jpg"
+            image: "https://example.com/images/aaron_rodgers_jersey.jpg",
+            category: "NFL"
         },
         {
-            category: "NBA",
             name: "LeBron James Jersey",
             description: "Los Angeles Lakers LeBron James Swingman Jersey",
             quantity: 12,
             price: 119.99,
-            image: "https://example.com/images/lebron_james_jersey.jpg"
+            image: "https://fanatics.frgimages.com/los-angeles-lakers/unisex-nike-lebron-james-gold-los-angeles-lakers-swingman-jersey-icon-edition_ss5_p-200040747+u-9ahuglaastmovr3gjzjv+v-mufnyyuuwjfqiz1ahilj.jpg?_hv=2&w=340",
+            category: "NBA"
         },
         {
-            category: "NBA",
             name: "Stephen Curry Jersey",
             description: "Golden State Warriors Stephen Curry Swingman Jersey",
             quantity: 9,
             price: 109.99,
-            image: "https://example.com/images/stephen_curry_jersey.jpg"
+            image: "https://fanatics.frgimages.com/golden-state-warriors/unisex-nike-stephen-curry-royal-golden-state-warriors-swingman-jersey-icon-edition_pi4650000_ff_4650408-bce9200a988d4fe31b0d_full.jpg?_hv=2&w=340",
+            category: "NBA"
         },
         {
-            category: "NBA",
             name: "Kevin Durant Jersey",
             description: "Phoenix Suns Kevin Durant Swingman Jersey",
             quantity: 7,
             price: 119.99,
-            image: "https://example.com/images/kevin_durant_jersey.jpg"
+            image: "https://example.com/images/kevin_durant_jersey.jpg",
+            category: "NBA"
         },
         {
-            category: "MLB",
             name: "Aaron Judge Jersey",
             description: "New York Yankees Aaron Judge Home Jersey",
             quantity: 10,
             price: 119.99,
-            image: "https://example.com/images/aaron_judge_jersey.jpg"
+            image: "https://fanatics.frgimages.com/new-york-yankees/mens-nike-aaron-judge-white-new-york-yankees-home-replica-player-name-jersey_pi3592000_ff_3592645-11960f417ba69ff98ecc_full.jpg?_hv=2&w=340",
+            category: "MLB"
         },
         {
-            category: "MLB",
             name: "Mookie Betts Jersey",
             description: "Los Angeles Dodgers Mookie Betts Home Jersey",
             quantity: 6,
             price: 129.99,
-            image: "https://example.com/images/mookie_betts_jersey.jpg"
+            image: "https://fanatics.frgimages.com/los-angeles-dodgers/mens-nike-mookie-betts-white-los-angeles-dodgers-home-limited-player-jersey_ss5_p-200251748+u-btissp52zvholusvkuo8+v-wfgrmjioo9sggmzbhrjr.jpg?_hv=2&w=340",
+            category: "MLB"
         },
         {
-            category: "MLB",
             name: "Mike Trout Jersey",
             description: "Los Angeles Angels Mike Trout Home Jersey",
             quantity: 8,
             price: 139.99,
-            image: "https://example.com/images/mike_trout_jersey.jpg"
+            image: "https://example.com/images/mike_trout_jersey.jpg",
+            category: "MLB"
         },
         {
-            category: "NHL",
             name: "Connor McDavid Jersey",
             description: "Edmonton Oilers Connor McDavid Home Jersey",
             quantity: 7,
             price: 169.99,
-            image: "https://example.com/images/connor_mcdavid_jersey.jpg"
+            image: "https://fanatics.frgimages.com/edmonton-oilers/mens-fanatics-connor-mcdavid-royal-edmonton-oilers-home-breakaway-jersey_ss5_p-201333807+u-zecda1m0xwjr2fp9dx8q+v-gerzebpovfcwhvjxtcw7.jpg?_hv=2&w=340",
+            category: "NHL"
         },
         {
-            category: "NHL",
             name: "Sidney Crosby Jersey",
             description: "Pittsburgh Penguins Sidney Crosby Home Jersey",
             quantity: 5,
             price: 159.99,
-            image: "https://example.com/images/sidney_crosby_jersey.jpg"
+            image: "https://example.com/images/sidney_crosby_jersey.jpg",
+            category: "NHL"
         },
         {
-            category: "NHL",
             name: "Alex Ovechkin Jersey",
             description: "Washington Capitals Alex Ovechkin Home Jersey",
             quantity: 6,
             price: 159.99,
-            image: "https://example.com/images/alex_ovechkin_jersey.jpg"
+            image: "https://example.com/images/alex_ovechkin_jersey.jpg",
+            category: "NHL"
         },
         {
-            category: "WNBA",
             name: "Diana Taurasi Jersey",
             description: "Phoenix Mercury Diana Taurasi Rebel Edition Jersey",
             quantity: 4,
             price: 99.99,
-            image: "https://example.com/images/diana_taurasi_jersey.jpg"
+            image: "https://example.com/images/diana_taurasi_jersey.jpg",
+            category: "WNBA"
         },
         {
-            category: "WNBA",
             name: "Breanna Stewart Jersey",
             description: "New York Liberty Breanna Stewart Explorer Edition Jersey",
             quantity: 5,
             price: 99.99,
-            image: "https://example.com/images/breanna_stewart_jersey.jpg"
+            image: "https://fanatics.frgimages.com/new-york-liberty/unisex-nike-breanna-stewart%C2%A0black-new-york-liberty-explorer-edition-victory-jersey_ss5_p-200589373+u-ckbnzrkbmfvzxpibkkbl+v-y8nn1hx8jeihdt3tllfu.jpg?_hv=2&w=340",
+            category: "WNBA"
         },
         {
-            category: "WNBA",
             name: "Aja Wilson Jersey",
             description: "Las Vegas Aces Aja Wilson Rebel Edition Jersey",
             quantity: 6,
             price: 99.99,
-            image: "https://example.com/images/aja_wilson_jersey.jpg"
+            image: "https://images.footballfanatics.com/las-vegas-aces/unisex-nike-aja-wilson-black-las-vegas-aces-rebel-edition-victory-player-jersey_pi4067000_altimages_ff_4067715-919a173a4852a0616e93alt1_full.jpg?_hv=2&w=340",
+            category: "WNBA"
         }
     ];
 

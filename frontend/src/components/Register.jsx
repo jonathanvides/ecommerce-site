@@ -1,11 +1,10 @@
-//Add cart fetching to keep items when logging in or registering
-
 import React, { useState } from "react";
 import { userSignup } from "../API/user";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "./auth";
+import { fetchCart } from "../API/cart";
 
-const Register = ({ setUserId }) => {
+const Register = ({ setUserId, setUserCartId }) => {
     const navigate = useNavigate();
     const [registerFormData, setRegisterFormData] = useState({
         username: '',
@@ -28,6 +27,9 @@ const Register = ({ setUserId }) => {
             if (data) {
                 setUserId(data.userDetails.id);
                 setToken(data.token);
+
+                const userCart = await fetchCart(data.userDetails.id, data.token);
+                setUserCartId(userCart.id);
 
                 navigate('/account');
             } else {

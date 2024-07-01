@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express('router');
+const router = express.Router();
 
 const {
     createProduct,
@@ -35,8 +35,8 @@ router.post('/', isAuthenticatedAdmin, async (req, res, next) => {
 
 router.get('/', async (req, res, next) => {
     try {
-        const product = await fetchProducts();
-        res.json(product);
+        const products = await fetchProducts();
+        res.json(products);
     } catch (error) {
         next(error);
     }

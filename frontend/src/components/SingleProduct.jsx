@@ -7,7 +7,7 @@ import { getToken } from "./auth";
 
 const Product = ({ userCartId, userId }) => {
     const token = getToken();
-    const [selectedProduct, setSelectedProduct] = useState('');
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const { productId } = useParams();
     const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Product = ({ userCartId, userId }) => {
                 console.log(fetchedProduct);
                 setSelectedProduct(fetchedProduct);
             } catch (error) {
-                setSelectedProduct('');
+                setSelectedProduct(null);
                 console.error('Failed to fetch product.', error);
             }
         };
@@ -51,7 +51,7 @@ const Product = ({ userCartId, userId }) => {
     return (
         <div>
             <h1>{selectedProduct.name}</h1>
-            {imageUrl}
+            <img src={imageUrl} alt={selectedProduct.name} />
             <h4>{selectedProduct.description}</h4>
             <h2>${selectedProduct.price}</h2>
             <button onClick={handleAddCartClick}>Add to Cart</button>

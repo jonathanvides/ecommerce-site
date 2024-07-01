@@ -56,7 +56,12 @@ const createTables = async () => {
         price DECIMAL NOT NULL,
         image VARCHAR(255),
         created_at TIMESTAMP DEFAULT NOW(),
-        updated_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+    );
+
+    CREATE TABLE order_status (
+        id UUID PRIMARY KEY,
+        status VARCHAR(25) NOT NULL
     );
 
     CREATE TABLE orders (
@@ -66,11 +71,6 @@ const createTables = async () => {
         total_price DECIMAL NOT NULL,
         created_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NOW()
-    );
-
-    CREATE TABLE order_status (
-        id UUID PRIMARY KEY,
-        status VARCHAR(25) NOT NULL
     );
 
     CREATE TABLE order_details (
@@ -95,9 +95,18 @@ const createTables = async () => {
         updated_at TIMESTAMP DEFAULT NOW()
     );
 
+    CREATE TABLE carts (
+        id UUID PRIMARY KEY,
+        user_id UUID REFERENCES users(id) ON DELETE CASCADE,
+        quantity INTEGER,
+        cart_total DECIMAL,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+    );
+
     CREATE TABLE cart_items (
         id UUID PRIMARY KEY,
-        cart_id UUID REFERENCES carts(id) ON DELETE CASCADE
+        cart_id UUID REFERENCES carts(id) ON DELETE CASCADE,
         product_id UUID REFERENCES products(id) ON DELETE CASCADE,
         product_name VARCHAR(255),
         product_description VARCHAR(255),
@@ -108,14 +117,6 @@ const createTables = async () => {
         updated_at TIMESTAMP DEFAULT NOW()
     );
 
-    CREATE TABLE carts (
-        id UUID PRIMARY KEY,
-        user_id UUID REFERENCES users(id) ON DELETE CASCADE,
-        quantity INTEGER,
-        cart_total DECIMAL,
-        created_at TIMESTAMP DEFAULT NOW(),
-        updated_at TIMESTAMP DEFAULT NOW()
-    );
   `;
 
     await client.query(SQL);

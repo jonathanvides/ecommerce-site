@@ -1,18 +1,20 @@
 const express = require("express");
+const app = express();
+app.use(express.json());
+
 const cors = require("cors");
 const morgan = require("morgan");
 const { createTables, client } = require("./db");
 const { seedDatabase } = require('./seedDatabase.js');
 
-const app = express();
 const port = process.env.PORT || 3000;
 
 const products = require('./routes/productRoute.js');
 const admins = require('./routes/adminRoute.js');
 const users = require('./routes/userRoute.js');
-const carts = require('./controllers/cart.js');
-const orders = require('./controllers/order.js');
-const categories = require('./controllers/category.js');
+const carts = require('./routes/cartRoute.js');
+const orders = require('./routes/orderRoute.js');
+const categories = require('./routes/categoryRoute.js');
 
 app.use(
     cors({
@@ -22,14 +24,13 @@ app.use(
 );
 
 app.use(morgan("dev"));
-app.use(express.json());
 
 app.use('/api/products', products);
 app.use('/api/admins', admins);
 app.use('/api/users', users);
-app.use('/api', carts);
-app.use('/api', orders);
-app.use('/api', categories);
+app.use('/api/carts', carts);
+app.use('/api/orders', orders);
+app.use('/api/categories', categories);
 
 const init = async () => {
     try {

@@ -24,7 +24,7 @@ router.post('/categories', isAuthenticatedAdmin, async (req, res, next) => {
     }
 });
 
-router.get('/categories', isAuthenticatedAdmin, async (req, res, next) => {
+router.get('/categories', async (req, res, next) => {
     try {
         const categories = await fetchAllCategories();
 
@@ -53,7 +53,7 @@ router.get('/categories/:id', async (req, res, next) => {
     }
 });
 
-router.put('/categories/:id', isAuthenticated, isSiteAdmin, async (req, res, next) => {
+router.put('/categories/:id', isAuthenticatedAdmin, async (req, res, next) => {
     try {
         const { id } = req.params;
         const { name } = req.body;
@@ -69,7 +69,7 @@ router.put('/categories/:id', isAuthenticated, isSiteAdmin, async (req, res, nex
 }
 );
 
-router.delete('/categories/:id', async (req, res, next) => {
+router.delete('/categories/:id', isAuthenticatedAdmin, async (req, res, next) => {
     try {
         const { id } = req.params;
         await deleteCategory({ id });

@@ -2,28 +2,21 @@ const { client } = require('../db.js');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 
-const createAdmin = async (req, res) => {
-    const { username, password, first_name, last_name, permissions } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
+const createAdmin = async ({ username, password, first_name, last_name, permissions}) => {
     const SQL = `
       INSERT INTO admins (id, username, password, first_name, last_name, permissions)
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING *;
     `;
-    const values = [
+    const response = await client.query(SQL,  [
         uuid.v4(),
         username,
-        hashedPassword,
+        await bcrypt.hash(password, 10),
         first_name,
         last_name,
         permissions,
-    ];
-    try {
-        const result = await client.query(SQL, values);
-        res.status(201).json(result.rows[0]);
-    } catch (error) {
-        res.status(500).json({ error: "Failed to create admin." });
-    }
+    ]);
+    return response.rows[0];
 };
 
 const fetchAdmin = async (req, res) => {

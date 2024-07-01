@@ -1,60 +1,61 @@
 const { client } = require('../db.js');
-const uuid = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 const createProduct = async ({
-    name,
-    description,
-    quantity,
-    price,
-    image,
-    category_id,
+  name,
+  description,
+  quantity,
+  price,
+  image,
+  category_id,
 }) => {
-    const SQL = `
+  const SQL = `
         INSERT INTO products(id, name, description, quantity, price, image, category_id) 
         VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *
       `;
 
-    const response = await client.query(SQL, [
-        uuid.v4(),
-        name,
-        description,
-        quantity,
-        price,
-        image,
-        category_id,
-    ]);
-
-    return response.rows[0];
-};
-
-const fetchProducts = async () => {
-    const SQL = `
-          SELECT * FROM products
-        `;
-
-    const response = await client.query(SQL);
-    return response.rows;
-};
-
-const fetchProductById = async (id) => {
-    const SQL = `
-      SELECT * FROM products WHERE id = $1
-      `;
-
-    const response = await client.query(SQL, [id]);
-    return response.rows[0];
-};
-
-const updateProduct = async ({
-    id,
+  const response = await client.query(SQL, [
+    uuidv4(),
     name,
     description,
     quantity,
     price,
     image,
     category_id,
+  ]);
+
+  return response.rows[0];
+};
+
+const fetchProducts = async () => {
+  const SQL = `
+          SELECT * FROM products
+        `;
+
+  const response = await client.query(SQL);
+  return response.rows;
+};
+
+const fetchProductById = async (id) => {
+  const SQL = `
+      SELECT * FROM products WHERE id = $1
+      `;
+
+  const response = await client.query(SQL, [id]);
+  return response.rows[0];
+};
+
+const updateProduct = async ({
+  id,
+  name,
+  description,
+  quantity,
+  price,
+  image,
+  category_id,
 }) => {
-    const SQL = `
+
+  const SQL = `
       UPDATE products 
       SET 
         name = COALESCE($2, name),
@@ -68,30 +69,30 @@ const updateProduct = async ({
       RETURNING *;
     `;
 
-    const response = await client.query(SQL, [
-        id,
-        name,
-        description,
-        quantity,
-        price,
-        image,
-        category_id,
-    ]);
+  const response = await client.query(SQL, [
+    id,
+    name,
+    description,
+    quantity,
+    price,
+    image,
+    category_id,
+  ]);
 
-    return response.rows[0];
+  return response.rows[0];
 };
 
 const deleteProduct = async ({ id }) => {
-    const SQL = `
+  const SQL = `
       DELETE FROM products WHERE id = $1 RETURNING *
       `;
-    await client.query(SQL, [id]);
+  await client.query(SQL, [id]);
 };
 
 module.exports = {
-    createProduct,
-    fetchProducts,
-    fetchProductById,
-    updateProduct,
-    deleteProduct,
+  createProduct,
+  fetchProducts,
+  fetchProductById,
+  updateProduct,
+  deleteProduct,
 };

@@ -84,53 +84,53 @@ const Home = () => {
         <div className="container">
             <section className="section">
                 <h2>Featured Products</h2>
-                <div className="product-grid">
-                    {featuredProducts.map((product) => (
+                <div>
+                    {featuredProducts.map((featuredProducts) => (
                         <div
-                            key={product.id}
+                            key={featuredProducts.id}
                             className="product-card"
-                            onClick={() => handleProductClick(product.id)}
+                            onClick={() => handleProductClick(featuredProducts.id)}
                         >
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name}</h3>
-                            <p>${product.price}</p>
+                            <img src={featuredProducts.image} alt={featuredProducts.name} />
+                            <h3>{featuredProducts.name}</h3>
+                            <p>${featuredProducts.price}</p>
                         </div>
                     ))}
                 </div>
             </section>
             <section className="section">
                 <h2>Best Sellers</h2>
-                <div className="product-grid">
-                    {bestSellers.map((product) => (
+                <div>
+                    {bestSellers.map((bestSellers) => (
                         <div
-                            key={product.id}
+                            key={bestSellers.id}
                             className="product-card"
-                            onClick={() => handleProductClick(product.id)}
+                            onClick={() => handleProductClick(bestSellers.id)}
                         >
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name}</h3>
-                            <p>${product.price}</p>
+                            <img src={bestSellers.image} alt={bestSellers.name} />
+                            <h3>{bestSellers.name}</h3>
+                            <p>${bestSellers.price}</p>
                         </div>
                     ))}
                 </div>
             </section>
             <section className="section">
                 <h2>New Arrivals</h2>
-                <div className="product-grid">
-                    {newArrivals.map((product) => (
+                <div>
+                    {newArrivals.map((newArrivals) => (
                         <div
-                            key={product.id}
+                            key={newArrivals.id}
                             className="product-card"
-                            onClick={() => handleProductClick(product.id)}
+                            onClick={() => handleProductClick(newArrivals.id)}
                         >
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name}</h3>
-                            <p>${product.price}</p>
+                            <img src={newArrivals.image} alt={newArrivals.name} />
+                            <h3>{newArrivals.name}</h3>
+                            <p>${newArrivals.price}</p>
                         </div>
                     ))}
                 </div>
             </section>
-            <section className="mission-statement">
+            <section>
                 <h2>Our Mission</h2>
                 <p>
                     Our mission is to provide loyal, passionate fans, dedicated to their favorite teams and to the sports they love with our collection of official sports apparel from all the leagues, teams and players they love. At ChampSpot, we're more than just a sport store, we're fans who have been there through the biggest upsets and the most epic moments, and we cherish the opportunity to help create unforgettable memories. Through our commitment to our community, we strive to be the ultimate destination for sports enthusiasts seeking to find the right sports apparel for them.
