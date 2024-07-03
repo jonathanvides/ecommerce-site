@@ -10,6 +10,7 @@ const setToken = (token) => {
   
   const removeToken = () => {
     localStorage.removeItem('token');
+    setUser(null);
   };
   
   export { setToken, getToken, removeToken };

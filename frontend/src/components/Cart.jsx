@@ -9,7 +9,7 @@ const Cart = ({ userId }) => {
     const [cartItems, setCartItems] = useState([]);
     const [pageRefresh, setPageRefresh] = useState(false);
     const [userCartId, setUserCartId] = useState(null);
-    const [cartDetails, setCartDetails] = useState('')
+    const [cartDetails, setCartDetails] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -43,7 +43,7 @@ const Cart = ({ userId }) => {
     }, [token, pageRefresh, userCartId]);
 
     const calculateTotal = () => {
-        return cartDetails
+        return cartItems
           .reduce((total, item) => total + item.price * item.quantity, 0)
           .toFixed(2);
       };
@@ -71,6 +71,8 @@ const Cart = ({ userId }) => {
     } else {
         return (
             <div>
+                <h2>Cart Details</h2>
+                <p>Cart ID: {cartDetails.id}</p>
                 {cartItems.map((item) => (
                     <CartItem key={item.id} item={item} refresh={refreshHandler} /> 
                 ))}

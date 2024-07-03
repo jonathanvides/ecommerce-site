@@ -9,6 +9,7 @@ const fetchCart = async (userId, token) => {
                 Authorization: `Bearer ${token}`,
             },
         });
+
         const cart = await response.json();
         console.log(cart);
         return cart;
@@ -19,7 +20,7 @@ const fetchCart = async (userId, token) => {
 
 const addCartItem = async (token, userCartId, productId, quantity) => {
     try {
-        const response = await fetch(`${API_URL}/cart/${userCartId}/items`, {
+        const response = await fetch(`${API_URL}/carts/${userCartId}/items`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,6 +31,11 @@ const addCartItem = async (token, userCartId, productId, quantity) => {
                 quantity: quantity,
             }),
         });
+
+        if (!response.ok) {
+            throw new Error(`Error adding item: ${response.statusText}`);
+        }
+
         const newItem = await response.json();
         console.log(newItem);
         return newItem;
@@ -40,13 +46,18 @@ const addCartItem = async (token, userCartId, productId, quantity) => {
 
 const fetchCartItems = async (userCartId, token) => {
     try {
-        const response = await fetch(`${API_URL}/cart/${userCartId}/items`, {
+        const response = await fetch(`${API_URL}/carts/${userCartId}/items`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
         });
+
+        if (!response.ok) {
+            throw new Error(`Error fetching cart items: ${response.statusText}`);
+        }
+
         const cartItems = await response.json();
         console.log(cartItems);
         return cartItems;
@@ -57,7 +68,7 @@ const fetchCartItems = async (userCartId, token) => {
 
 const updateCartItem = async (itemId, quantity, token) => {
     try {
-        const response = await fetch(`${API_URL}/cart/items/${itemId}`, {
+        const response = await fetch(`${API_URL}/carts/items/${itemId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -65,6 +76,11 @@ const updateCartItem = async (itemId, quantity, token) => {
             },
             body: JSON.stringify({ quantity }),
         });
+
+        if (!response.ok) {
+            throw new Error(`Error updating item: ${response.statusText}`);
+        }
+
         const updatedItem = await response.json();
         console.log(updatedItem);
         return updatedItem;
@@ -75,13 +91,18 @@ const updateCartItem = async (itemId, quantity, token) => {
 
 const deleteCartItem = async (itemId, token) => {
     try {
-        await fetch(`${API_URL}/cart/items/${itemId}`, {
+        await fetch(`${API_URL}/carts/items/${itemId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${token}`,
             },
         });
+
+        if (!response.ok) {
+            throw new Error(`Error deleting item: ${response.statusText}`);
+        }
+
         console.log(`${itemId}`);
     } catch (error) {
         console.error(`Error deleting order ${itemId}`, error);
@@ -100,6 +121,11 @@ const cartCheckout = async (userId, userCartId, token) => {
                 },
             }
         );
+
+        if (!response.ok) {
+            throw new Error(`Error during checkout: ${response.statusText}`);
+        }
+
         const checkoutData = await response.json();
         console.log(checkoutData);
         return checkoutData;

@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express('router');
+const router = express.Router();
 
 const {
     createUser,
@@ -20,7 +20,7 @@ const {
 router.post('/signup', async (req, res, next) => {
     try {
         const { username, email, password, first_name, last_name, phone_number } = req.body;
-        const newUser = await createUser({
+        const { userDetails, token } = await createUser({
             username,
             email,
             password,
@@ -28,7 +28,7 @@ router.post('/signup', async (req, res, next) => {
             last_name,
             phone_number,
         });
-        res.status(201).json(newUser);
+        res.status(201).json({ userDetails, token });
     } catch (error) {
         next(error);
     }
@@ -36,7 +36,8 @@ router.post('/signup', async (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
     try {
-        res.send(await authenticateUser(req.body));
+        const { userDetails, token } = await authenticateUser(req.body);
+        res.json({ userDetails, token });
     } catch (error) {
         next(error);
     }

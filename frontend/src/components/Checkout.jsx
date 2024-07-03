@@ -6,7 +6,7 @@ import { fetchCart, cartCheckout } from '../API/cart'; // ?
 import { getToken } from './auth'; // ?
 import { useNavigate } from "react-router-dom"; // ?
 
-const CheckOut = ({ userId, userCartId }) => {
+const Checkout = ({ userId, userCartId }) => {
   
     return (
       <>
@@ -15,4 +15,4 @@ const CheckOut = ({ userId, userCartId }) => {
     );
   };
   
-  export default CheckOut;
+  export default Checkout;

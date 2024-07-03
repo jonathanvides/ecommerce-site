@@ -108,7 +108,7 @@ const seedDatabase = async () => {
             description: "Green Bay Packers Aaron Rodgers Game Jersey",
             quantity: 5,
             price: 129.99,
-            image: "https://example.com/images/aaron_rodgers_jersey.jpg",
+            image: "https://fanatics.frgimages.com/green-bay-packers/mens-green-bay-packers-aaron-rodgers-nike-green-game-player-jersey_pi825000_ff_825453_full.jpg?_hv=2&w=340",
             category: "NFL"
         },
         {
@@ -132,7 +132,7 @@ const seedDatabase = async () => {
             description: "Phoenix Suns Kevin Durant Swingman Jersey",
             quantity: 7,
             price: 119.99,
-            image: "https://example.com/images/kevin_durant_jersey.jpg",
+            image: "https://fanatics.frgimages.com/phoenix-suns/unisex-jordan-brand-kevin-durant-black-phoenix-suns-swingman-jersey-statement-edition_ss5_p-200031305+u-seqgrdjxzw8g92lwxvir+v-ipyxqpu3a0jyvzxq5dj5.jpg?_hv=2&w=340",
             category: "NBA"
         },
         {
@@ -156,7 +156,7 @@ const seedDatabase = async () => {
             description: "Los Angeles Angels Mike Trout Home Jersey",
             quantity: 8,
             price: 139.99,
-            image: "https://example.com/images/mike_trout_jersey.jpg",
+            image: "https://fanatics.frgimages.com/los-angeles-angels/mens-nike-mike-trout-white-los-angeles-angels-home-replica-player-name-jersey_pi3592000_ff_3592478-caaf08873960b4901356_full.jpg?_hv=2&w=340",
             category: "MLB"
         },
         {
@@ -172,7 +172,7 @@ const seedDatabase = async () => {
             description: "Pittsburgh Penguins Sidney Crosby Home Jersey",
             quantity: 5,
             price: 159.99,
-            image: "https://example.com/images/sidney_crosby_jersey.jpg",
+            image: "https://fanatics.frgimages.com/pittsburgh-penguins/mens-fanatics-sidney-crosby-black-pittsburgh-penguins-captain-patch-home-breakaway-jersey_pi5275000_ff_5275446-1d177e8adb1f642ab6aa_full.jpg?_hv=2&w=340",
             category: "NHL"
         },
         {
@@ -180,7 +180,7 @@ const seedDatabase = async () => {
             description: "Washington Capitals Alex Ovechkin Home Jersey",
             quantity: 6,
             price: 159.99,
-            image: "https://example.com/images/alex_ovechkin_jersey.jpg",
+            image: "https://fanatics.frgimages.com/washington-capitals/mens-adidas-alexander-ovechkin-red-washington-capitals-home-primegreen-authentic-player-jersey_pi4260000_ff_4260802-74233f8177366ee3b6c5_full.jpg?_hv=2&w=340",
             category: "NHL"
         },
         {
@@ -188,7 +188,7 @@ const seedDatabase = async () => {
             description: "Phoenix Mercury Diana Taurasi Rebel Edition Jersey",
             quantity: 4,
             price: 99.99,
-            image: "https://example.com/images/diana_taurasi_jersey.jpg",
+            image: "https://fanatics.frgimages.com/phoenix-mercury/unisex-nike-diana-taurasi-black-phoenix-mercury-2024-rebel-edition-player-jersey_ss5_p-200590449+u-2dl1z3spkjhzduo4q1qf+v-sbpffhhecdl2mhzdr9av.jpg?_hv=2&w=340",
             category: "WNBA"
         },
         {

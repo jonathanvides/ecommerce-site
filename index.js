@@ -28,9 +28,9 @@ app.use(morgan("dev"));
 app.use('/api/products', products);
 app.use('/api/admins', admins);
 app.use('/api/users', users);
-app.use('/api/carts', carts);
-app.use('/api/orders', orders);
-app.use('/api/categories', categories);
+app.use('/api', carts);
+app.use('/api', orders);
+app.use('/api', categories);
 
 const init = async () => {
     try {

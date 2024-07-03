@@ -7,7 +7,7 @@ import Account from "./components/Account";
 import Products from "./components/Products";
 import Product from "./components/SingleProduct";
 import Cart from "./components/Cart";
-import CheckOut from './components/Checkout';
+import Checkout from './components/Checkout';
 import Nav from "./components/Nav";
 import { getToken } from "./components/auth";
 import { userDetails } from "./API/user";
@@ -55,7 +55,7 @@ function App() {
         <Route path="/login" element={<Login setUserId={setUserId} />} />
         <Route path="/account" element={<Account userId={userId} />} />
         <Route path="/cart" element={<Cart userId={userId} />} />
-        <Route path="/cart/checkout" element={<CheckOut userId={userId} userCartId={userCartId} />} />
+        <Route path="/checkout" element={<Checkout userId={userId} userCartId={userCartId} />} />
         <Route path="/products" element={<Products userCartId={userCartId} />} />
         <Route path="/products/:productId" element={<Product userCartId={userCartId} userId={userId} />} />
       </Routes>

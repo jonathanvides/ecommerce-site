@@ -1,6 +1,9 @@
 const { client } = require('../db.js');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { findUserByToken } = require('./auth.js');
+const secret = process.env.JWT_SECRET || 'shhh';
 
 const createUser = async ({
     username,
@@ -20,7 +23,20 @@ const createUser = async ({
         last_name,
         phone_number,
     ]);
-    return response.rows[0];
+
+    const newUser = response.rows[0];
+
+    const token = jwt.sign(
+        {
+            id: newUser.id,
+        },
+        secret,
+        { expiresIn: '1h' }
+    );
+
+    const userDetails = await findUserByToken(token);
+
+    return { userDetails, token };
 };
 
 const fetchUsers = async () => {

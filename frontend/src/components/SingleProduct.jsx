@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { fetchProduct } from "../API/product";
 import { addCartItem } from "../API/cart";
-import { BASE_URL } from "../API/url";
 import { getToken } from "./auth";
 
-const Product = ({ userCartId, userId }) => {
+const Product = ({ userCartId }) => {
     const token = getToken();
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { productId } = useParams();
@@ -18,7 +17,7 @@ const Product = ({ userCartId, userId }) => {
                 console.log(fetchedProduct);
                 setSelectedProduct(fetchedProduct);
             } catch (error) {
-                setSelectedProduct(null);
+                setSelectedProduct('');
                 console.error('Failed to fetch product.', error);
             }
         };
@@ -32,8 +31,6 @@ const Product = ({ userCartId, userId }) => {
         return <div>Product Not Found.</div>;
     };
 
-    const imageUrl = `${BASE_URL}${selectedProduct.image}`;
-
     const handleAddCartClick = async () => {
         if (!token) {
             navigate('/login')
@@ -42,7 +39,7 @@ const Product = ({ userCartId, userId }) => {
         try {
             const addItem = await addCartItem(token, userCartId, selectedProduct.id, 1);
             console.log(addItem);
-            navigate('/products');
+            navigate('/');
         } catch (error) {
             console.error('Error adding item:', error)
         }
@@ -51,7 +48,7 @@ const Product = ({ userCartId, userId }) => {
     return (
         <div>
             <h1>{selectedProduct.name}</h1>
-            <img src={imageUrl} alt={selectedProduct.name} />
+            <img src={selectedProduct.image} alt={selectedProduct.name} />
             <h4>{selectedProduct.description}</h4>
             <h2>${selectedProduct.price}</h2>
             <button onClick={handleAddCartClick}>Add to Cart</button>

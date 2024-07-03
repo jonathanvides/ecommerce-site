@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { deleteCartItem, updateCartItem } from "../API/cart";
-import { BASE_URL } from '../API/url';
 import { getToken } from "./auth";
 
 const CartItem = ({ item, refresh }) => {
     const token = getToken();
-    const imageUrl = `${BASE_URL}${item.product_image}`;
     const [itemQty, setItemQty] = useState(item.quantity);
 
     console.log(item);
@@ -34,7 +32,7 @@ const CartItem = ({ item, refresh }) => {
 
     return (
         <div>
-            {imageUrl}
+            <img src={item.product_image} alt={item.product_name} />
             <h4>{item.product_name}</h4>
             <p>{item.product_description}</p>
             <div>

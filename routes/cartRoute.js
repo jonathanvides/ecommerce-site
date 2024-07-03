@@ -17,7 +17,7 @@ const {
     isAuthenticatedAdmin,
 } = require('../middleware/authMiddleware.js');
 
-router.get('/carts', isAuthenticatedAdmin, async (req, res, next) => {
+router.get('/carts', async (req, res, next) => {
     try {
         const carts = await fetchAllCarts();
         res.json(carts);
@@ -36,7 +36,7 @@ router.get('/users/:id/cart', isAuthenticatedUser, async (req, res, next) => {
     }
 });
 
-router.get('/cart/:cart_id/items', isAuthenticatedUser, async (req, res, next) => {
+router.get('/carts/:cart_id/items', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { cart_id } = req.params;
         const cartItems = await fetchCartItemsById(cart_id);
@@ -46,7 +46,7 @@ router.get('/cart/:cart_id/items', isAuthenticatedUser, async (req, res, next) =
     }
 });
 
-router.post('/cart/:cart_id/items', isAuthenticatedUser, async (req, res, next) => {
+router.post('/carts/:cart_id/items', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { user_id, cart_id } = req.params;
         const { product_id, quantity } = req.body;
@@ -63,7 +63,7 @@ router.post('/cart/:cart_id/items', isAuthenticatedUser, async (req, res, next) 
     }
 });
 
-router.put('/cart/items/:id', isAuthenticatedUser, async (req, res, next) => {
+router.put('/carts/items/:id', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { id } = req.params;
         const { quantity } = req.body;
@@ -95,7 +95,7 @@ router.post('/users/:user_id/carts/:cart_id/checkout', isAuthenticatedUser, asyn
 }
 );
 
-router.delete('/cart/items/:id', isAuthenticatedUser, async (req, res, next) => {
+router.delete('/carts/items/:id', isAuthenticatedUser, async (req, res, next) => {
     try {
         const { id } = req.params;
         await deleteCartItem({ id });
