@@ -9,15 +9,20 @@ const Cart = ({ userId }) => {
     const [cartItems, setCartItems] = useState([]);
     const [pageRefresh, setPageRefresh] = useState(false);
     const [userCartId, setUserCartId] = useState(null);
-    const [cartDetails, setCartDetails] = useState([])
+    const [cartDetails, setCartDetails] = useState('')
     const navigate = useNavigate();
 
     useEffect(() => {
         const getUserCart = async () => {
             try {
                 const userCart = await fetchCart(userId, token);
+                console.log('Fetched user cart:', userCart)
+                if (userCart && userCart.id) {
                 setUserCartId(userCart.id);
                 setCartDetails(userCart)
+                } else {
+                    console.error('Invalid userCart response:', userCart)
+                }
             } catch (error) {
                 console.error('Error fetching cart:', error);
             }
@@ -33,6 +38,7 @@ const Cart = ({ userId }) => {
             if (userCartId) {
                 try {
                     const fetchedItems = await fetchCartItems(userCartId, token);
+                    console.log('Fetched cart items:', fetchedItems); 
                     setCartItems(fetchedItems);
                 } catch (error) {
                     console.error('Error fetching items:', error);

@@ -62,7 +62,7 @@ const Register = ({ setUserId, setUserCartId }) => {
     return (
         <div>
             <h1>Sign Up!</h1>
-            <form onSubmit={handleSubmit}>
+            <form className="register-form" onSubmit={handleSubmit}>
                 <input
                     name="username"
                     type="text"

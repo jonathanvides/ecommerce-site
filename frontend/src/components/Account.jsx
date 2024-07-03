@@ -66,10 +66,10 @@ const Account = ({ userId }) => {
       <h1>Account</h1>
       <h2>Welcome!</h2>
       <h4>Account Details</h4>
-      <p>{`Username: ${getUserDetails.username}`}</p>
-      <p>{`Name: ${getUserDetails.first_name} ${getUserDetails.last_name}`}</p>
-      <p>{`Email: ${getUserDetails.email}`}</p>
-      <p>{`Phone: ${getUserDetails.phone_number}` || ''}</p>
+      <p className="username">{`Username: ${getUserDetails.username}`}</p>
+      <p className="name">{`Name: ${getUserDetails.first_name} ${getUserDetails.last_name}`}</p>
+      <p className="email-user">{`Email: ${getUserDetails.email}`}</p>
+      <p className="phone-number">{`Phone: ${getUserDetails.phone_number}` || ''}</p>
 
       <h4>Order Details</h4>
       {orders.map(order => (

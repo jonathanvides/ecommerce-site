@@ -36,7 +36,7 @@ const Home = () => {
 
     return (
         <div className="container">
-            <section className="section">
+            <section className="search">
                 <input
                     type="text"
                     placeholder="Search"

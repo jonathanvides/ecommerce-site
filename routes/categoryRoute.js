@@ -14,7 +14,7 @@ const {
     isAuthenticatedAdmin,
 } = require('../middleware/authMiddleware.js');
 
-router.post('/categories', isAuthenticatedAdmin, async (req, res, next) => {
+router.post('/categories', async (req, res, next) => {
     try {
         const { name } = req.body;
         const newCategory = await createCategory({ name });
@@ -53,7 +53,7 @@ router.get('/categories/:id', async (req, res, next) => {
     }
 });
 
-router.put('/categories/:id', isAuthenticatedAdmin, async (req, res, next) => {
+router.put('/categories/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
         const { name } = req.body;
@@ -69,7 +69,7 @@ router.put('/categories/:id', isAuthenticatedAdmin, async (req, res, next) => {
 }
 );
 
-router.delete('/categories/:id', isAuthenticatedAdmin, async (req, res, next) => {
+router.delete('/categories/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
         await deleteCategory({ id });

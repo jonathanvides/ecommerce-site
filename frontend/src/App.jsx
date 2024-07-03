@@ -28,7 +28,7 @@ function App() {
           const fetchUserDetails = await userDetails(token);
           setUserId(fetchUserDetails.id);
           console.log(fetchUserDetails);
-          const userCart = await fetchCart(fetchUserDetails.id, token);
+          const userCart = await fetchCart(userId, token);
           setUserCartId(userCart.id);
         } catch (error) {
           console.error('Error initializing user:', error);
@@ -43,6 +43,7 @@ function App() {
   }, []);
 
   console.log(userId);
+  console.log(userCartId);
 
   return (
     <>

@@ -47,11 +47,11 @@ const Product = ({ userCartId }) => {
 
     return (
         <div>
-            <h1>{selectedProduct.name}</h1>
-            <img src={selectedProduct.image} alt={selectedProduct.name} />
-            <h4>{selectedProduct.description}</h4>
-            <h2>${selectedProduct.price}</h2>
-            <button onClick={handleAddCartClick}>Add to Cart</button>
+            <h1 className="single-name">{selectedProduct.name}</h1>
+            <img className="single-image" src={selectedProduct.image} alt={selectedProduct.name} />
+            <h4 className="single-description">{selectedProduct.description}</h4>
+            <h2 className="single-price">${selectedProduct.price}</h2>
+            <button className="add-to-cart" onClick={handleAddCartClick}>Add to Cart</button>
         </div>
     );
 };

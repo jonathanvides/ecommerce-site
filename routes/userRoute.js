@@ -68,7 +68,7 @@ router.get('/:id', isAuthenticatedUser, async (req, res, next) => {
     }
 });
 
-router.get('/', isAuthenticatedUser, async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     try {
         const users = await fetchUsers();
         if (!users) {

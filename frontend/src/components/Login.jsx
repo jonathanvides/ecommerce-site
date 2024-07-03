@@ -47,7 +47,7 @@ const Login = ({ setUserId }) => {
             <h1>
                 Welcome!
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form className="login-form" onSubmit={handleSubmit}>
                 <input
                     name="email"
                     type="text"

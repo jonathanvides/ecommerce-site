@@ -13,21 +13,18 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-container">
-                <div>
-                    <Link to="/" className="navbar">
+                    <Link to="/" className="navbar-home">
                         Home
                     </Link>
-                    <Link to="/account" className="navbar">
+                    <Link to="/account" className="navbar-acc">
                         Account
                     </Link>
-                    <Link to="/cart" className="navbar">
+                    <Link to="/cart" className="navbar-cart">
                         Cart
                     </Link>
                     <button className="navbar-logout" onClick={logoutHandler}>
                         Logout
                     </button>
-
-                </div>
             </div>
         </nav>
     );

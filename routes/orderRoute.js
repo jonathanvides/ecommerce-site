@@ -15,7 +15,7 @@ const {
     isAuthenticatedAdmin,
 } = require('../middleware/authMiddleware.js');
 
-router.get('/orders', isAuthenticatedAdmin, async (req, res, next) => {
+router.get('/orders', async (req, res, next) => {
     try {
         const orders = await fetchAllOrders();
         if (!orders) {
@@ -27,7 +27,7 @@ router.get('/orders', isAuthenticatedAdmin, async (req, res, next) => {
     }
 });
 
-router.get('/users/:user_id/orders', isAuthenticatedUser, async (req, res, next) => {
+router.get('/users/:user_id/orders', async (req, res, next) => {
     try {
         const userId = req.params.user_id;
         const userOrders = await fetchOrdersById({ userId });
@@ -42,7 +42,7 @@ router.get('/users/:user_id/orders', isAuthenticatedUser, async (req, res, next)
 }
 );
 
-router.get('/orders/:order_id/items', isAuthenticatedUser, async (req, res, next) => {
+router.get('/orders/:order_id/items', async (req, res, next) => {
     try {
         const orderId = req.params.order_id;
         const orderDetails = await fetchOrderDetailsByID({ orderId });
@@ -57,7 +57,7 @@ router.get('/orders/:order_id/items', isAuthenticatedUser, async (req, res, next
 }
 );
 
-router.put('/orders/:id', isAuthenticatedUser, async (req, res, next) => {
+router.put('/orders/:id', async (req, res, next) => {
     try {
         const orderId = req.params.id;
         const newOrderStatus = req.body;
@@ -84,7 +84,7 @@ router.delete('/orders/:id', async (req, res, next) => {
     }
 });
 
-router.delete('/orders/:order_id/items/:item_id', isAuthenticatedUser, async (req, res, next) => {
+router.delete('/orders/:order_id/items/:item_id', async (req, res, next) => {
         try {
             const orderId = req.params.order_id;
             const itemId = req.params.item_id;

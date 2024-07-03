@@ -11,7 +11,7 @@ const fetchCart = async (userId, token) => {
         });
 
         const cart = await response.json();
-        console.log(cart);
+        console.log("cart:", cart);
         return cart;
     } catch (error) {
         console.error(error);
@@ -44,9 +44,9 @@ const addCartItem = async (token, userCartId, productId, quantity) => {
     }
 };
 
-const fetchCartItems = async (userCartId, token) => {
+const fetchCartItems = async (cartId, token) => {
     try {
-        const response = await fetch(`${API_URL}/carts/${userCartId}/items`, {
+        const response = await fetch(`${API_URL}/carts/${cartId}/items`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

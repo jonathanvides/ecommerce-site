@@ -13,7 +13,7 @@ const {
     isAuthenticatedAdmin,
 } = require('../middleware/authMiddleware.js');
 
-router.post('/', isAuthenticatedAdmin, async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const { name, description, quantity, price, image, category_id } = req.body;
         const admin_id = req.admin.id;
@@ -52,7 +52,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.put('/:id', isAuthenticatedAdmin, async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
         const { name, description, quantity, price, image, category_id } = req.body;
@@ -74,7 +74,7 @@ router.put('/:id', isAuthenticatedAdmin, async (req, res, next) => {
 }
 );
 
-router.delete('/:id', isAuthenticatedAdmin, async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     try {
         const { id } = req.params;
         await deleteProduct({ id });

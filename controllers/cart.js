@@ -9,21 +9,21 @@ const fetchAllCarts = async () => {
     return response.rows;
   };
   
-  const fetchCartById = async (id) => {
+  const fetchCartById = async (user_id) => {
     const SQL = `
           SELECT * FROM carts WHERE user_id = $1;
         `;
   
-    const response = await client.query(SQL, [id]);
+    const response = await client.query(SQL, [user_id]);
     return response.rows[0];
   };
   
-  const fetchCartItemsById = async (id) => {
+  const fetchCartItemsById = async (cart_id) => {
     const SQL = `
       SELECT * FROM cart_items WHERE cart_id = $1
     `;
   
-    const response = await client.query(SQL, [id]);
+    const response = await client.query(SQL, [cart_id]);
     return response.rows;
   };
   
@@ -31,7 +31,6 @@ const fetchAllCarts = async () => {
     cart_id,
     product_id,
     quantity,
-    user_id,
   }) => {
     const productSQL = `SELECT * FROM products WHERE id = $1`;
     const productResponse = await client.query(productSQL, [
@@ -74,7 +73,6 @@ const fetchAllCarts = async () => {
       cart_id,
       product_id,
       parseInt(quantity, 10),
-      user_id,
     ]);
     return response.rows[0];
   };

@@ -16,11 +16,11 @@ const {
 
 const router = express('router');
 
-router.post("/", isAuthenticatedAdmin, createAdmin); 
-router.get("/", isAuthenticatedAdmin, fetchAdmin);
-router.get("/:id", isAuthenticatedAdmin, fetchAdminByUsername);
-router.put("/:id", isAuthenticatedAdmin, updateAdmin);
-router.delete("/:id", isAuthenticatedAdmin, deleteAdmin);
+router.post("/", createAdmin); 
+router.get("/", fetchAdmin);
+router.get("/:id", fetchAdminByUsername);
+router.put("/:id", updateAdmin);
+router.delete("/:id", deleteAdmin);
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;

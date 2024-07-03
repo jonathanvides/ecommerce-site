@@ -1,68 +1,197 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
+  font-family: Georgia, serif;
+  background-color: white;
   margin: 0;
+  padding: 0;
+}
+
+/* Add your own custom styles here */
+.product-card {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 500;
+  font-size: medium;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.image {
+  max-height: 300px;
+}
+
+.add-to-cart {
+  margin-bottom: 30px;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 30px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+h2 {
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.register-form {
+  display: flex;
+  height: fit-content;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.login-form {
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.product-name {
+  margin-top: 30px;
+}
+
+.price {
+  padding: 0px 10px 0px 10px;
+}
+
+.searchTerm {
+  margin-left: 10px;
+  margin-bottom: 10px;
+} 
+
+.email {
+  padding-right: 5px;
+}
+
+.password {
+  padding-right: 5px;
+}
+
+.navbar {
+  display: inline-flex;
+  background-color: salmon;
+}
+
+.navbar-acc {
+  padding-left: 50px;
+}
+
+.navbar-cart {
+  padding-left: 50px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.username {
+  display: flex;
+  justify-content: left;
+  align-items: left;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  font-size: large;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.name {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-weight: 500;
+  font-size: large;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.email-user {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-weight: 500;
+  font-size: large;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.phone-number {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-weight: 500;
+  font-size: large;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.navbar-logout {
+  margin-left: 50px;
+}
+
+.single-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.single-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.single-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35%;
+}
+
+.single-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 10px 0px 0px;
+}
+
+.res-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 10px 0px 0px;
+}
+
+.reservations {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
 }
