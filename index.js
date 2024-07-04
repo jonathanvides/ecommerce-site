@@ -18,7 +18,7 @@ const categories = require('./routes/categoryRoute.js');
 
 app.use(
     cors({
-        origin: 'http://localhost:5173',
+        origin: 'https://ecommerce-site-frontend.onrender.com',
         credentials: true,
     })
 );
@@ -31,6 +31,11 @@ app.use('/api/users', users);
 app.use('/api/carts', carts);
 app.use('/api', orders);
 app.use('/api', categories);
+
+app.use(express.static(path.join(__dirname, 'frontend/dist')));
+app.get('/store/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/dist/index.html'));
+});
 
 const init = async () => {
     try {
