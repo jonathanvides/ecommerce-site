@@ -34,7 +34,7 @@ app.use('/api', orders);
 app.use('/api', categories);
 
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
-app.get('/store/*', (req, res) => {
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/dist/index.html'));
 });
 
