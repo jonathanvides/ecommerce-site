@@ -33,10 +33,16 @@ app.use('/api/carts', carts);
 app.use('/api', orders);
 app.use('/api', categories);
 
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist/index.html'));
-});
+app.get("/", (req, res) =>
+  res.sendFile(
+    path.join(__dirname, "./frontend/dist/index.html")
+  )
+);
+
+app.use(
+  "/assets",
+  express.static(path.join(__dirname, "./frontend/dist/assets"))
+);
 
 const init = async () => {
     try {
