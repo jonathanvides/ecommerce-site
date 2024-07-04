@@ -60,7 +60,7 @@ const Home = () => {
                 </div>
             </section>
             <section className="mission">
-                <h2>Our Mission</h2>
+                <h2>Who are we?</h2>
                 <p>
                     Our mission is to provide loyal, passionate fans, dedicated to their favorite teams and to the sports they love with our collection of official sports apparel from all the leagues, teams and players they love. At ChampSpot, we're more than just a sport store, we're fans who have been there through the biggest upsets and the most epic moments, and we cherish the opportunity to help create unforgettable memories. Through our commitment to our community, we strive to be the ultimate destination for sports enthusiasts seeking to find the right sports apparel for them.
                 </p>
