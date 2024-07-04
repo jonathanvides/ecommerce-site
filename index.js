@@ -3,6 +3,7 @@ const app = express();
 app.use(express.json());
 
 const cors = require("cors");
+const path = require('path');
 const morgan = require("morgan");
 const { createTables, client } = require("./db");
 const { seedDatabase } = require('./seedDatabase.js');
