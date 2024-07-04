@@ -65,13 +65,14 @@ const Account = ({ userId }) => {
     <div>
       <h1>Account</h1>
       <h2>Welcome!</h2>
+      <section className="details">
       <h4>Account Details</h4>
       <p className="username">{`Username: ${getUserDetails.username}`}</p>
       <p className="name">{`Name: ${getUserDetails.first_name} ${getUserDetails.last_name}`}</p>
       <p className="email-user">{`Email: ${getUserDetails.email}`}</p>
       <p className="phone-number">{`Phone: ${getUserDetails.phone_number}` || ''}</p>
 
-      <h4>Order Details</h4>
+      <h4 className="order">Order Details</h4>
       {orders.map(order => (
         <div key={order.id}>
           <p>Order ID: {order.id}</p>
@@ -79,6 +80,7 @@ const Account = ({ userId }) => {
           <p>Total: ${order.total}</p>
         </div>
       ))}
+      </section>
     </div>
   );
 };

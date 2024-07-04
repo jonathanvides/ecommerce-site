@@ -65,7 +65,7 @@ const Login = ({ setUserId }) => {
 
                 <button>Login</button>
             </form>
-            <h3>
+            <h3 className="create-account">
                 Not a member yet?
                 <Link to="/signup" className="signup-link">
                     CREATE ACCOUNT

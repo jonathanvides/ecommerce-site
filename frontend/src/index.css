@@ -24,6 +24,8 @@ body {
   border: 1px solid black;
   border-radius: 5px;
   margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .image {
@@ -31,6 +33,9 @@ body {
 }
 
 .add-to-cart {
+  display: flex;
+  justify-content: center;
+  margin-left: 47%;
   margin-bottom: 30px;
 }
 
@@ -72,7 +77,11 @@ h2 {
 }
 
 .price {
-  padding: 0px 10px 0px 10px;
+  padding: 0px 10px 10px 10px;
+}
+
+.single-price {
+  padding: 0px 10px 10px 10px;
 }
 
 .searchTerm {
@@ -88,17 +97,67 @@ h2 {
   padding-right: 5px;
 }
 
+.details {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    padding-left: 45%;
+    justify-items: center;
+    font-size:x-large;
+}
+
+.order {
+  padding-top: 20px;
+}
+
+.create-account {
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+}
+
+.mission {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+}
+
 .navbar {
-  display: inline-flex;
+  margin-bottom: 20px;
   background-color: salmon;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: larger;
+}
+
+.website-title {
+  font-style: normal;
+  color: darkblue;
+  text-decoration: none;
+}
+
+.navbar-home {
+  padding-left: 50px;
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-acc {
   padding-left: 50px;
+  color: white;
+  text-decoration: none;
 }
 
 .navbar-cart {
   padding-left: 50px;
+  color: white;
+  text-decoration: none;
 }
 
 .search {
@@ -179,19 +238,4 @@ h2 {
   justify-content: center;
   align-items: center;
   padding: 0px 10px 0px 0px;
-}
-
-.res-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 10px 0px 0px;
-}
-
-.reservations {
-  display: flex;
-  width: fit-content;
-  justify-content: center;
-  align-items: center;
-  margin-top: 30px;
 }

@@ -13,6 +13,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-container">
+                    <Link to ="/" className="website-title">Champ Spot </Link>
                     <Link to="/" className="navbar-home">
                         Home
                     </Link>
