@@ -19,7 +19,7 @@ const categories = require('./routes/categoryRoute.js');
 
 app.use(
     cors({
-        origin: 'https://ecommerce-site-frontend.onrender.com',
+        origin: 'https://ecommerce-site-kuaf.onrender.com',
         credentials: true,
     })
 );
