@@ -1,5 +1,4 @@
 require('dotenv').config();
-console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`);
 
 const express = require("express");
 const app = express();
@@ -50,7 +49,6 @@ app.use(
 const init = async () => {
     try {
         console.log("connecting to database...");
-        console.log(`DATABASE_URL: ${process.env.DATABASE_URL}`);
         await client.connect();
         console.log("connected to the database");
 
