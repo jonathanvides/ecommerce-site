@@ -2,17 +2,16 @@ const pg = require('pg');
 const uuid = require('uuid');
 require('dotenv').config();
 
-const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/ecommerce_db');
+// Used for local production instead of remote
+// const client = new pg.Client(process.env.DATABASE_URL || 'postgres://localhost/ecommerce_db');
 
-// Deployment for render to move into a production state
+const production = process.env.NODE_ENV === 'production'; // Needs to be a production environment instead of development
+const connectionOptions = {
+  connectionString: process.env.DATABASE_URL,
+  ssl: production ? { rejectUnauthorized: false } : false,
+};
 
-// const production = process.env.NODE_ENV === 'production'; //Needs to be a production environment instead of development
-// const connectionOptions = {
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: production ? { rejectUnauthorized: false } : false,
-// // };
-
-// const client = new pg.Client(connectionOptions);
+const client = new pg.Client(connectionOptions);
 
 const createTables = async () => {
     const SQL = `
