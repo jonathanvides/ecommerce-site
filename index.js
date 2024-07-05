@@ -21,7 +21,7 @@ const categories = require('./routes/categoryRoute.js');
 
 app.use(
     cors({
-        origin: 'https://ecommerce-site-kuaf.onrender.com',
+        origin: 'http://localhost:5173',
         credentials: true,
     })
 );
